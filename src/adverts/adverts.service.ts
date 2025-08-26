@@ -44,11 +44,11 @@ export class AdvertsService {
   }
 
   findById(id: string) {
-    return this.advertsRepository.findOne(id);
+    return this.advertsRepository.findOne({ where: { id } });
   }
 
   async remove(id: string) {
-    const advert = await this.advertsRepository.findOne(id);
+    const advert = await this.advertsRepository.findOne({ where: { id } });
     if (!advert) {
       return null;
     }

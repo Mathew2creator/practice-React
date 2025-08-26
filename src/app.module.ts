@@ -11,7 +11,12 @@ import { AppController } from './app.controller';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'data/nodepop.sqlite',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
     AuthModule,
     UsersModule,
     AdvertsModule,
